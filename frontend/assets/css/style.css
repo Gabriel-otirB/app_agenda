@@ -29,10 +29,6 @@
     transition: color 0.3s;
   }
 
-  .nav-link:hover {
-    color: #FFD700; /* Cor ao passar o mouse */
-  }
-
   .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;

@@ -73,8 +73,8 @@ class Login {
     }
 
     this.body = {
-      email: this.body.email,
-      password: this.body.password
+      email: this.body.email.trim(),
+      password: this.body.password.trim()
     };
   }
 }

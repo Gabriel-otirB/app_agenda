@@ -23,16 +23,42 @@ export default class Login {
     const passwordInput = el.querySelector('input[name="password"]');
     let error = false;
 
-    if(!validator.isEmail(emailInput.value)) {
-      alert('E-mail inválido');
+    //Validando email front end
+    if (validator.isEmail(emailInput.value)) {
+      if (emailInput.nextElementSibling) {
+        const emailErro = emailInput.nextElementSibling;
+        emailErro.remove();
+      }
+    }
+
+    if (!validator.isEmail(emailInput.value)) {
+      const mensagemErro = emailInput.nextElementSibling;
+      if (!mensagemErro) {
+        emailInput.insertAdjacentHTML('afterend', '<span class="text-danger">E-mail inválido</span>');
+      }
       error = true;
     }
 
-    if(passwordInput.value.length < 3 || passwordInput.value.length > 50) {
-      alert('Senha precisa ter entre 3 e 50 caracteres');
+    //validando senha front end
+    if (!this.validaSenha(passwordInput)) {
+      if (passwordInput.nextElementSibling) {
+        const passwordInputlErro = passwordInput.nextElementSibling;
+        passwordInputlErro.remove();
+      }
+    }
+
+    if(this.validaSenha(passwordInput)) {
+      const mensagemErro = passwordInput.nextElementSibling;
+      if (!mensagemErro) {
+        passwordInput.insertAdjacentHTML('afterend', '<span class="text-danger">Senha precisa ter entre 3 e 50 caracteres</span>');
+      }
       error = true;
     }
 
     if(!error) el.submit();
+  }
+
+  validaSenha(passwordInput) {
+    return passwordInput.value.length < 3 || passwordInput.value.length > 50;
   }
 }

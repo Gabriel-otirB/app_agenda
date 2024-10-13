@@ -43,10 +43,10 @@ Contato.prototype.cleanUp = function() {
   }
 
   this.body = {
-    nome: this.body.nome,
-    sobrenome: this.body.sobrenome,
-    email: this.body.email,
-    telefone: this.body.telefone,
+    nome: this.body.nome.trim(),
+    sobrenome: this.body.sobrenome.trim(),
+    email: this.body.email.trim(),
+    telefone: this.body.telefone.trim(),
   };
 };
 
